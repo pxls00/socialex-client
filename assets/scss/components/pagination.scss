@@ -1,0 +1,27 @@
+.pagination {
+  margin-bottom: 0;
+  .page-item.active button{
+    background: $primary-blue-07;
+    border: 1px solid $primary-blue;
+    &:hover {
+      background: $primary-blue;
+    }
+  }
+
+  .page-item {
+    button.page-link {
+      div {
+        svg {
+          color: $primary-blue !important;
+        }
+      }
+    }
+  }
+  .page-link {
+    padding: 5px 8px;
+    height: 100%;
+    div {
+      font-size: 20px;
+    }
+  }
+}

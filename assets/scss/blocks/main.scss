@@ -1,0 +1,28 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: $roboto;
+}
+
+.logo {
+  max-width: 200px;
+  object-fit: contain;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+}
+.wrapper-content {
+  flex: 1 1 100%;
+  margin-left: 230px;
+  height: 100%;
+  background: $primary-black-02;
+  min-height: 100vh;
+  transition: margin-left .15s;
+  &--fluid {
+    margin-left: 65px;
+    transition: margin-left .25s;
+  }
+}

@@ -1,0 +1,101 @@
+.form {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px 20px;
+  border-radius: 10px;
+  background-color: $primary-white;
+  margin: 0 auto;
+  &-file-label {
+    width: 100%;
+    border-radius: 8px;
+    height: 100%;
+    background-color: $primary-blue-02;
+    position: relative;
+    cursor: pointer;
+    transition: background-color .2s;
+    &:hover {
+      background-color: $primary-blue-05;
+    }
+  }
+  &-file-helpers {
+    color: $primary-red;
+  }
+  &-file-dropzone {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    span {
+      font-size: 70px;
+      display: flex;
+      align-items: flex-end;
+    }
+    p {
+      text-align: center;
+      color: $primary-black-07;
+      margin-bottom: 0;
+      width: 100%;
+      font-size: 15px;
+    }
+  }
+  &-file {
+    width: 100%;
+    opacity: 0;
+    width: 100%;
+    flex: 1 1 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  &__logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  &__title {
+    h4 {
+      font-size: 26px;
+      font-weight: 600;
+      font-family: $lato;
+    }
+  }
+  &__field {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+    div {
+      width: 100%;
+    }
+    label {
+      margin: 0;
+    }
+    &-input {
+      font-size: 15px;
+      padding: 5px 8px;
+      color: $primary-black;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+    &-title {
+      flex: 1 1 100%;
+      margin: 0;
+      font-size: 18px;
+    }
+  }
+  &__actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+  &__submit-btn {
+    padding: 8px 12px;
+  }
+}

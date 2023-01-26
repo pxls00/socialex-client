@@ -1,0 +1,123 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  &__top {
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    &-avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    &-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    &-name {
+      font-size: 18px;
+      font-family: $lato;
+      font-weight: 400;
+      margin: 0;
+    }
+    &-credentials {
+      margin-top: 10px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      &-item {
+        font-size: 14px;
+        margin: 0;
+        span {
+          font-weight: 500;
+          cursor: pointer;
+        }
+      }
+    }
+    &-desc {
+      p {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 500;
+        color: $primary-black-07;
+      }
+    }
+  }
+  &__posts-tab {
+    font-size: 14px;
+    font-weight: 400;
+    font-weight: $lato;
+    margin: 0;
+  }
+}
+
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  margin: 0 auto;
+  justify-content: center;
+  max-width: calc(250px * 3 + 20px);
+  &__item {
+    cursor: pointer;
+    width: 250px;
+    height: 250px;
+    border: 1px solid $primary-blue-05;
+    position: relative;
+    &-img {
+      width: 100%;
+      height: 100%;
+      background: $primary-black;
+      img {
+        object-fit: contain;
+        height: 100%;
+        width: 100%;
+      }
+    }
+    &-credentials {
+      position: absolute;
+      background-color: $primary-white-05;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      opacity: 0;
+      transition: opacity .3s;
+      display: flex;
+      &-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+        color: $primary-black;
+        font-weight: 600;
+      }
+    }
+    &:hover .posts__item-credentials {
+      opacity: 1;
+    }
+  }
+}

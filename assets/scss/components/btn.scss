@@ -1,0 +1,68 @@
+.button {
+  background: $primary-blue;
+  color: $primary-white;
+  padding: 5px 14px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  box-shadow: 1px 1px 5px $primary-blue-02;
+  transition: opacity 0.3s;
+  font-size: 16px;
+  font-weight: 400;
+  transition: all .2s;
+  min-width: 60px;
+  cursor: pointer;
+  &:hover {
+    background-color: $primary-blue-07;
+  }
+  &--danger {
+    background: $primary-red;
+    box-shadow: 1px 1px 5px $primary-red-02;
+    &:hover {
+      background-color: $primary-red-07;
+    }
+  }
+  &--sucess {
+    background: $primary-sucess;
+    box-shadow: 1px 1px 5px $primary-sucess-02;
+    &:hover {
+      background-color: $primary-sucess-07;
+    }
+  }
+  &--warning {
+    background: $primary-warning;
+    box-shadow: 1px 1px 5px $primary-warning-02;
+    &:hover {
+      background-color: $primary-warning-07;
+    }
+  }
+  &--sm {
+    font-size: 14px;
+    padding: 4px 12px;
+    border-radius: 6px;
+  }
+  &--md {
+    font-size: 20px;
+    padding: 5px 16px;
+    border-radius: 10px;
+  }
+  &--fluid {
+    width: 100%;
+  }
+}
+.anactive {
+  background-color: $primary-blue-05;
+}
+
+.button--disabled {
+  background-color: $primary-blue-07;
+  cursor: auto;
+}
+.button---danger.button--disabled {
+  background-color: $primary-red-07;
+  cursor: auto;
+}
+.button---sucess.button--disabled {
+  background-color: $primary-sucess-07;
+  cursor: auto;
+}

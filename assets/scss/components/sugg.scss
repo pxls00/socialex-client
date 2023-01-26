@@ -1,0 +1,59 @@
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  &.sugg {
+    .card-body {
+      background: $primary-white;
+      min-height: auto;
+      height: max-content;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 8px;
+      gap: 8px;
+    }
+  }
+}
+
+.sugg {
+  &-avatar {
+    img {
+      border-radius: 50%;
+      overflow: hidden;
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+  }
+  &-info {
+    display: flex;
+    flex-direction: column;
+    a {
+      text-decoration: none;
+    }
+    &-name {
+      h3 {
+        color: $primary-black;
+        font-weight: 600;
+        font-size: 16px;
+        margin: 0;
+        transition: all 0.2;
+        &:hover {
+          color: $primary-black-07;
+        }
+      }
+    }
+    &-email {
+      p {
+        color: $primary-black-07;
+        font-size: 12px;
+        font-weight: 400;
+        margin: 0;
+      }
+    }
+  }
+  &-action {
+    margin-left: auto;
+  }
+}
