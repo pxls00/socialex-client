@@ -114,15 +114,15 @@ export default {
         },
         endpoints: {
           login: {
-            url: 'http://localhost:8000/api/auth/login',
+            url: `${process.env.APP_API_URL}auth/login`,
             method: 'post',
           },
           user: {
-            url: 'http://localhost:8000/api/settings',
+            url: `${process.env.APP_API_URL}settings`,
             method: 'get',
           },
           logout: {
-            url: 'http://localhost:8000/api/auth/logout',
+            url: `${process.env.APP_API_URL}auth/logout`,
             method: 'delete',
           },
           refresh: false,
