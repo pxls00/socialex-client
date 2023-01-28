@@ -1,4 +1,5 @@
-# test
+# SocialeX
+Social-media for posting images and following users and others
 
 ## Build Setup
 
