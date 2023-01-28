@@ -204,6 +204,7 @@ export default {
 
   head() {
     return {
+      title: this.postItem?.title,
       meta: [
         {
           hid: 'og:site_name',

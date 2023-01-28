@@ -114,15 +114,15 @@ export default {
         },
         endpoints: {
           login: {
-            url: `${process.env.APP_API_URL}auth/login`,
+            url: `${process.env.APP_API_URL}/auth/login`,
             method: 'post',
           },
           user: {
-            url: `${process.env.APP_API_URL}settings`,
+            url: `${process.env.APP_API_URL}/settings`,
             method: 'get',
           },
           logout: {
-            url: `${process.env.APP_API_URL}auth/logout`,
+            url: `${process.env.APP_API_URL}/auth/logout`,
             method: 'delete',
           },
           refresh: false,

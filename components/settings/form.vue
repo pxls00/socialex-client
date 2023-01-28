@@ -25,7 +25,7 @@
         <div class="settings__left-avatar">
           <img
             :src="
-              formFields.imageFile?.result
+              'result' in formFields.imageFile
                 ? formFields.imageFile.result
                 : formFields?.image
             "
@@ -157,8 +157,8 @@ export default {
         username: '',
         bio: '',
         email: '',
-        imageFile: '',
-        image: {},
+        imageFile: {},
+        image: '',
       },
       file: '',
     }
@@ -282,7 +282,12 @@ export default {
       this.$loader.show()
       this.$v.$touch()
       if (!this.$v.$invalid) {
-        await this.uploadFile()
+        if(Object.keys(this.formFields.imageFile).length && this.formFields.imageFile) {
+          await this.uploadFile()
+        }else {
+          this.$emit('submit', this.formFields)
+        }
+
       }
     },
   },

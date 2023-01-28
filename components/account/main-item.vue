@@ -3,19 +3,29 @@
     <div class="profile__top">
       <div class="profile__top-left">
         <div class="profile__top-avatar">
-          <img
-            :src="account.image"
-          />
+          <img :src="account.image" />
         </div>
       </div>
       <div class="profile__top-right">
-        <div class="profile__top-info">
+        <div v-if="Object.keys(account).length" class="profile__top-info">
           <h4 class="profile__top-name">{{ account.name }}</h4>
           <nuxt-link v-if="getCurrent" :to="$getRoutePath('settings')">
             <button class="button">Edit profile</button>
           </nuxt-link>
-          <button v-else-if="getFollowed" class="button button--danger" @click="$emit('unfollow')">Unfollow</button>
-          <button v-else-if="!getFollowed" class="button" @click="$emit('follow')">Follow</button>
+          <button
+            v-else-if="getFollowed"
+            class="button button--danger"
+            @click="$emit('unfollow')"
+          >
+            Unfollow
+          </button>
+          <button
+            v-else-if="!getFollowed"
+            class="button"
+            @click="$emit('follow')"
+          >
+            Follow
+          </button>
         </div>
         <div class="profile__top-credentials">
           <p
@@ -26,16 +36,49 @@
           <p
             class="profile__top-credentials-item profile__top-credentials-followers"
           >
-            <span @click="getFollowers">{{ account.followers?.length }}</span> followers
+            <span @click="getFollowers">{{ account.followers?.length }}</span>
+            followers
           </p>
           <p
             class="profile__top-credentials-item profile__top-credentials-followings"
           >
-            <span @click="getFollowings">{{ account.followings?.length }}</span> following
+            <span @click="getFollowings">{{ account.followings?.length }}</span>
+            following
           </p>
         </div>
-        <div class="profile__top-desc">{{ account.bio }}</div>
-        <div class="profile__top-desc" v-html="account.bio" />
+      </div>
+      <div class="profile__top-bio w-100">
+        <div
+          class="profile__top-triger w-100 d-flex justify-content-between align-items-center"
+        >
+          Account bio:
+          <button
+            v-b-toggle.accountBio
+            type="button"
+            :class="[
+              { 'button--warning': showMoreBio },
+              'button',
+              'button--sm',
+            ]"
+          >
+            {{ showMoreBio ? 'Hide' : 'Show' }}
+            <span
+              ><b-icon :icon="showMoreBio ? 'arrow-bar-up' : 'arrow-bar-down'"
+            /></span>
+          </button>
+        </div>
+        <b-collapse
+          id="accountBio"
+          class="mt-2"
+          @show="showMoreBio = true"
+          @hide="showMoreBio = false"
+        >
+          <template #default>
+            <div class="profile__top-bio-content">
+              <div class="profile__top-desc" v-html="account.bio" />
+            </div>
+          </template>
+        </b-collapse>
       </div>
     </div>
     <div class="profile__divider"></div>
@@ -51,18 +94,23 @@ export default {
   props: {
     account: {
       type: Object,
-      required: true
+      required: true,
     },
     postLenght: {
       type: Number,
-      required: true
+      required: true,
+    },
+  },
+  data() {
+    return {
+      showMoreBio: false,
     }
   },
   computed: {
     ...mapState('auth', ['user']),
     getCurrent() {
-      if(Object.keys(this.account).length) {
-        if(this.account._id.toString() === this.user._id.toString()) {
+      if (Object.keys(this.account).length) {
+        if (this.account._id.toString() === this.user._id.toString()) {
           return true
         }
       }
@@ -70,13 +118,17 @@ export default {
     },
 
     getFollowed() {
-      if(!this.getCurrent && Object.keys(this.account).length) {
-        if(this.account.followers.find(item => item._id === this.user._id.toString())) {
+      if (!this.getCurrent && Object.keys(this.account).length) {
+        if (
+          this.account.followers.find(
+            (item) => item._id === this.user._id.toString()
+          )
+        ) {
           return true
         }
       }
       return false
-    }
+    },
   },
   methods: {
     getPosts() {
@@ -89,7 +141,7 @@ export default {
 
     getFollowings() {
       this.$emit('followings')
-    }
-  }
+    },
+  },
 }
 </script>

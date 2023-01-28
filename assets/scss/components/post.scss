@@ -66,6 +66,10 @@
       display: flex;
       align-items: center;
       background: $primary-black;
+      &-item {
+        width: 100%;
+        object-fit: contain;
+      }
     }
   }
   &__top {
@@ -327,7 +331,6 @@
   display: flex;
   align-items: center;
 }
-
 .post-comment-input {
   font-weight: 500;
   font-size: 15px;
@@ -390,4 +393,16 @@
   right: 0;
   font-size: 18px;
   top: -5px;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+  background-color: $primary-black !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-position: center center;
+  background-size: 50%;
+  border-radius: 50%;
 }

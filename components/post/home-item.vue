@@ -253,7 +253,7 @@ export default {
     },
 
     async copyPostURL(data) {
-      const url = `http://localhost:3000/posts/${data._id}`
+      const url = `https://socialex-test.vercel.app/posts/${data._id}`
       try {
         await navigator.clipboard.writeText(url)
         this.$notify({ message: 'Copied to clipboard', variant: 'success' })
