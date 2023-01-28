@@ -155,6 +155,7 @@
         <template #default>
           <h5 class="mb-4 d-flex justify-content-center">
             Are you sure you want to upload those {{ files.length }} items?
+            You can't add new images after upload !!
           </h5>
           <div class="d-flex w-100 justify-content-end">
             <button

@@ -51,7 +51,24 @@ export default {
   },
   head() {
     return {
-      title: 'Edit Post',
+      title: 'Edit post',
+      meta: [
+        {
+          hid: 'og:site_name',
+          property: 'og:site_name',
+          content: 'SocialEx',
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `Edit post page`,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'The project of pxls00. Editing and publication of content on the website as directed by the digital content manager',
+        },
+      ],
     }
   },
   methods: {

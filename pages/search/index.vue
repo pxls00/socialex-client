@@ -181,9 +181,25 @@ export default {
   head() {
     return {
       title: 'Search',
+      meta: [
+        {
+          hid: 'og:site_name',
+          property: 'og:site_name',
+          content: 'SocialEx',
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `Search accounts or posts in SocialeX`,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'The project of pxls00. Editing and publication of content on the website as directed by the digital content manager',
+        },
+      ],
     }
   },
-
   computed: {
     ...mapState('auth', ['user']),
   },

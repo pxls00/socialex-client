@@ -26,7 +26,8 @@
           following
         </p>
       </div>
-      <div class="profile__top-desc" v-html="account.bio">
+      <div class="profile__top-username">
+        {{ account.username }}
       </div>
     </div>
   </div>

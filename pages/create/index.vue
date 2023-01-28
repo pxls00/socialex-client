@@ -24,7 +24,24 @@ export default {
   },
   head() {
     return {
-      title: 'Craete Post',
+      title: 'Create post',
+      meta: [
+        {
+          hid: 'og:site_name',
+          property: 'og:site_name',
+          content: 'SocialEx',
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `Create post page`,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'The project of pxls00. Editing and publication of content on the website as directed by the digital content manager',
+        },
+      ],
     }
   },
   methods: {

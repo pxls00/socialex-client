@@ -183,6 +183,23 @@ export default {
   head() {
     return {
       title: 'Home',
+      meta: [
+        {
+          hid: 'og:site_name',
+          property: 'og:site_name',
+          content: 'SocialEx',
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'Posts, Home page',
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'The project of pxls00. Editing and publication of content on the website as directed by the digital content manager',
+        },
+      ],
     }
   },
 

@@ -97,8 +97,71 @@
       </b-form-group>
     </div>
     <div class="w-100 d-flex justify-content-end mt-5">
-      <button type="submit" class="button button-primary">Update</button>
+      <button
+        type="button"
+        class="button button--danger mr-1"
+        @click="$bvModal.show('deleteAccount')"
+      >
+        Delete Account
+      </button>
+      <button
+        type="button"
+        class="button button--warning mr-1"
+        @click="cancelUpdateClicked"
+      >
+        Cancel
+      </button>
+      <button type="submit" class="button">Update</button>
     </div>
+    <client-only>
+      <AppModal id="deleteAccount">
+        <template #default>
+          <h5 class="mb-4">
+            Are you sure you want to delete your account? 
+            All your data will be lost and cannot be recovered !!
+          </h5>
+          <div class="d-flex w-100 justify-content-end">
+            <button
+              class="button mr-2"
+              type="buton"
+              @click="$bvModal.hide('deleteAccount')"
+            >
+              Cancel
+            </button>
+            <button
+              class="button button--danger"
+              type="button"
+              @click="deleteAccount"
+            >
+              Delete
+            </button>
+          </div>
+        </template>
+      </AppModal>
+    </client-only>
+    <client-only>
+      <AppModal id="cancelUpdate">
+        <template #default>
+          <h5 class="mb-4">Are you sure you want to stop the update ?</h5>
+          <div class="d-flex w-100 justify-content-end">
+            <button
+              class="button mr-2"
+              type="buton"
+              @click="$bvModal.hide('cancelUpdate')"
+            >
+              No
+            </button>
+            <button
+              class="button button--danger"
+              type="button"
+              @click="cancelUpdate"
+            >
+              Yes
+            </button>
+          </div>
+        </template>
+      </AppModal>
+    </client-only>
     <client-only>
       <AppModal id="cropImage">
         <Cropper
@@ -169,6 +232,29 @@ export default {
   },
 
   methods: {
+    deleteAccount() {
+      this.$emit('deleteAccount')
+      this.$bvModal.hide('deleteAccount')
+    },
+
+    cancelUpdateClicked() {
+      if (
+        this.formFields.name !== this.initialData.name ||
+        this.formFields.username !== this.initialData.username ||
+        this.formFields.bio !== this.initialData.bio ||
+        Object.keys(this.formFields.imageFile).length
+      ) {
+        this.$bvModal.show('cancelUpdate')
+      } else {
+        this.cancelUpdate()
+      }
+    },
+
+    cancelUpdate() {
+      this.clearFormData()
+      this.$router.push(this.$getRoutePath('home'))
+    },
+
     validateState(name) {
       const { $dirty, $error } = this.$v.formFields[name]
       return $dirty ? !$error : null
@@ -190,7 +276,7 @@ export default {
       this.formFields.bio = ''
       this.formFields.email = ''
       this.formFields.image = ''
-      this.formFields.imageFile = ''
+      this.formFields.imageFile = {}
       this.file = ''
     },
 
@@ -271,7 +357,7 @@ export default {
         this.getUploadedProfileFile(folderName).then(() => {
           setTimeout(() => {
             this.$emit('submit', this.formFields)
-          }, 2100)
+          }, 3000)
         })
       } catch (error) {
         this.handleError(error)
@@ -282,12 +368,14 @@ export default {
       this.$loader.show()
       this.$v.$touch()
       if (!this.$v.$invalid) {
-        if(Object.keys(this.formFields.imageFile).length && this.formFields.imageFile) {
+        if (
+          Object.keys(this.formFields.imageFile).length &&
+          this.formFields.imageFile
+        ) {
           await this.uploadFile()
-        }else {
+        } else {
           this.$emit('submit', this.formFields)
         }
-
       }
     },
   },

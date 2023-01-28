@@ -94,7 +94,7 @@
         alt="Image"
       >
         <template #img>
-          <img class="d-block mx-auto" height="350" :src="imgItem.url" />
+          <img class="d-block mx-auto w-100 home-item-img" :src="imgItem.url" />
         </template>
       </b-carousel-slide>
     </b-carousel>
@@ -253,7 +253,7 @@ export default {
     },
 
     async copyPostURL(data) {
-      const url = `https://socialex-test.vercel.app/posts/${data._id}`
+      const url = `https://socialex-static.vercel.app/posts/${data._id}`
       try {
         await navigator.clipboard.writeText(url)
         this.$notify({ message: 'Copied to clipboard', variant: 'success' })

@@ -1,6 +1,6 @@
 <template>
   <div class="settings-page">
-    <FormUserSettings :initial-data="user" @submit="updateSettings" />
+    <FormUserSettings :initial-data="user" @submit="updateSettings" @deleteAccount="deleteAccount"/>
   </div>
 </template>
 
@@ -12,6 +12,28 @@ export default {
   name: 'UserSettingsPage',
   components: {
     FormUserSettings,
+  },
+  head() {
+    return {
+      title: 'Settings account',
+      meta: [
+        {
+          hid: 'og:site_name',
+          property: 'og:site_name',
+          content: 'SocialEx',
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `Settings page account`,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'The project of pxls00. Editing and publication of content on the website as directed by the digital content manager',
+        },
+      ],
+    }
   },
   computed: {
     ...mapState('auth', ['user']),
@@ -37,6 +59,17 @@ export default {
           this.$loader.hide()
         }
     },
+    async deleteAccount() {
+      this.$loader.show()
+      try {
+        await this.$api.settings.deleteCurrentAccount()
+      } catch (error) {
+        this.handleError(error)
+      } finally {
+        this.$loader.hide()
+        this.$router.push("/register?message=deleted")
+      }
+    }
   },
 }
 </script>

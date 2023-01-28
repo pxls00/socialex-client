@@ -5,7 +5,6 @@
         id="carousel-1"
         :controls="post.media?.length > 1"
         :indicators="post.media?.length > 1"
-        img-height="350"
         :interval="0"
       >
         <b-carousel-slide
@@ -14,7 +13,7 @@
           alt="Image"
         >
           <template #img>
-            <img class="d-block mx-auto post-main__left-item" height="350" :src="imgItem.url" />
+            <img class="d-block mx-auto post-main__left-item w-100" :src="imgItem.url" />
           </template>
         </b-carousel-slide>
       </b-carousel>
@@ -235,7 +234,7 @@ export default {
     },
 
     async copyPostURL(data) {
-      const url = `https://socialex-test.vercel.app/posts/${data._id}`
+      const url = `https://socialex-static.vercel.app/posts/${data._id}`
       try {
         await navigator.clipboard.writeText(url)
         this.$notify({ message: 'Copied to clipboard', variant: 'success' })

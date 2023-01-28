@@ -59,4 +59,31 @@ export default (axios) => ({
         })
     })
   },
+
+  /**
+   * Update settings
+   *
+   * @param {Object} requestData
+   *
+   * @param {Object} urlData
+   *
+   * @returns {Promise}
+   */
+  deleteCurrentAccount(requestData = {}, urlData = {}) {
+    const requestConfig = {
+      method: 'delete',
+      url: `${baseUrl}/`,
+      ...requestData,
+    }
+
+    return new Promise((resolve, reject) => {
+      axios(requestConfig)
+        .then((data) => {
+          resolve(data.data)
+        })
+        .catch((err) => {
+          reject(err)
+        })
+    })
+  },
 })
