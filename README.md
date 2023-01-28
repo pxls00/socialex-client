@@ -7,6 +7,8 @@ so i settled on vercel.
 Since vercel hosting service doesn't have ssr hosting server, I had to host in spa view (
 Apologies in advance for slowing down my project…
 In my SocialeX project, you can create random posts for yourself and comment on posts, etc.
+static deploy - https://socialex-static.vercel.app/
+static app - https://github.com/pxls00/socialex-static
 
 ## Build Setup
 
